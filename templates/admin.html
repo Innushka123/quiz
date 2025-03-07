@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Statistics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Statistics</h1>
+        <p>Total Participants: {{ stats.total_participants }}</p>
+        <p>Average Score: {{ stats.average_score }}%</p>
+        <h2>Question Statistics</h2>
+        <ul>
+            {% for question_id, correct_rate in stats.question_stats.items() %}
+                <li>Question {{ question_id }}: {{ correct_rate * 100 }}% correct</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

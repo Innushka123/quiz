@@ -23,7 +23,6 @@ class QuizResult(db.Model):
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
 # Routes
-
 @app.route('/')
 def index():
     return render_template('index.html')

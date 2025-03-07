@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App</title>
+    <title>Lookup Results</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -38,18 +38,12 @@
 </head>
 <body>
     <div class="container">
-        <h1>Register</h1>
-        <form action="/register" method="post">
+        <h1>Lookup Results</h1>
+        <form action="/results/lookup" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <br>
-            <label for="language">Preferred Language:</label>
-            <select id="language" name="language">
-                <option value="en">English</option>
-                <option value="de">German</option>
-            </select>
-            <br>
-            <button type="submit">Register</button>
+            <button type="submit" class="btn">Lookup</button>
         </form>
         {% if error %}
             <p style="color: red;">{{ error }}</p>

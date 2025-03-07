@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App</title>
+    <title>Quiz</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -38,22 +38,20 @@
 </head>
 <body>
     <div class="container">
-        <h1>Register</h1>
-        <form action="/register" method="post">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <br>
-            <label for="language">Preferred Language:</label>
-            <select id="language" name="language">
-                <option value="en">English</option>
-                <option value="de">German</option>
-            </select>
-            <br>
-            <button type="submit">Register</button>
+        <h1>Quiz for {{ username }}</h1>
+        <form action="/submit" method="post">
+            <input type="hidden" name="username" value="{{ username }}">
+            {% for question in questions %}
+                <div>
+                    <p>{{ question.text }}</p>
+                    {% for option in question.options %}
+                        <input type="radio" id="{{ question.question_id }}_{{ option }}" name="answers[{{ question.question_id }}]" value="{{ option }}">
+                        <label for="{{ question.question_id }}_{{ option }}">{{ option }}</label>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn">Submit</button>
         </form>
-        {% if error %}
-            <p style="color: red;">{{ error }}</p>
-        {% endif %}
     </div>
 </body>
 </html>
